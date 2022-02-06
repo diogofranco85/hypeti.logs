@@ -6,14 +6,19 @@ export default {
         return log;
     },
 
-    find: async (dto) => {
-        console.log('log', [dto, Log]);
+    show: async (dto) => {
+
         const field = dto.field;
         const filter = dto.filter;
+        const page = parseInt(dto.page);
+        const limit = parseInt(dto.limit);
 
-        const log = await Log.find({
+        const log = await Log.paginate({
             [field]: filter
-        }).exec();
+        }, {
+            page,
+            limit
+        })
 
         return log;
 

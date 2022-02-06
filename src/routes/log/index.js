@@ -5,6 +5,6 @@ const routes = Router();
 const endpoint = '/logger';
 
 
-routes.post(`${endpoint}/find`, Controller.find);
+routes.post(`${endpoint}/find`, Controller.show);
 
 export default routes;

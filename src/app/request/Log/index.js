@@ -12,7 +12,7 @@ export default {
         }
     },
 
-    parserFind: async ({ body }) => {
+    parserFind: async ({ body, query }) => {
         const schema = Yup.object().shape({
             filter: Yup.string().required(),
             field: Yup.string().required(),
@@ -22,9 +22,10 @@ export default {
         await schema.validate(body, { strict: true })
             .then(() => {
                 parser = {
-                    password: body.password,
-                    passwordConfirmation: body.passwordConfirmation,
-                    oldPassword: body.oldPassword,
+                    filter: body.filter,
+                    field: body.field,
+                    page: body.page ?? 1,
+                    limit: body.limit ?? 50
                 }
             })
             .catch(err => {

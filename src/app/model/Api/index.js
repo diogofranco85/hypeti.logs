@@ -1,4 +1,4 @@
-import mongoose from "../../index";
+import mongoose from "../../../database";
 
 const ApiSchema = new mongoose.Schema({
     app: {
@@ -13,10 +13,13 @@ const ApiSchema = new mongoose.Schema({
         unique: true,
         lowercase: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    active: {
+        type: Boolean,
+        required: true,
+        default: true
     }
+}, {
+    timestamps: true
 })
 
 const Api = mongoose.model('Api', ApiSchema);

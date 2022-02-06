@@ -1,4 +1,5 @@
 import mongoose from "../../../database";
+import paginate from 'mongoose-paginate';
 
 const LogSchema = new mongoose.Schema({
     app: {
@@ -24,7 +25,9 @@ const LogSchema = new mongoose.Schema({
     }
 }, {
     timestamps: true
-})
+});
+
+LogSchema.plugin(paginate);
 
 const Log = mongoose.model('Log', LogSchema);
 

@@ -6,6 +6,7 @@ import routes from './routes';
 import queue from './config/rabbit';
 import dtoLog from './app/request/Log';
 import logService from './app/services/Log';
+import middlewareAuthAPI from './app/middleware/authApiKey';
 
 const app = express();
 app.use(helmet());
@@ -17,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use('/api', routes);
 
-app.get('/send', (request, response) => {
+app.get('/api/send', middlewareAuthAPI, (request, response) => {
     queue.sendToQueue(process.env.CHANNEL_LOG, request.body);
     response.json({
         success: true,
