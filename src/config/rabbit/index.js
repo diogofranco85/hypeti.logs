@@ -1,4 +1,3 @@
-const { connection } = require('mongoose')
 
 const connect = () => {
     return require('amqplib').connect(`amqp://${process.env.RABBITMQ_HOST}`)

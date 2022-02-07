@@ -2,13 +2,16 @@ import * as Yup from 'yup'
 
 export default {
     fromMessaging: (data) => {
+
         return {
             code: data.code ?? 0,
             app: data.app,
-            description: data.description,
-            input: data.input,
-            output: data.output,
-            message: data.message
+            action: data.action,
+            path: data.path,
+            method: data.method,
+            input: JSON.stringify(data.input),
+            output: JSON.stringify(data.output),
+            message: JSON.stringify(data.message)
         }
     },
 
