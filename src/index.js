@@ -33,7 +33,6 @@ queue.consume(process.env.CHANNEL_LOG, async message => {
 })
 
 const PORT = process.env.PORT;
-
 app.listen(PORT, () => {
     console.log(`Service LOG started in port: ${PORT}`);
 })

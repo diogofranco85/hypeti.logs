@@ -5,10 +5,10 @@ export default {
 
         return {
             code: data.code ?? 0,
-            app: data.app,
-            action: data.action,
-            path: data.path,
-            method: data.method,
+            app: JSON.stringify(data.app),
+            action: JSON.stringify(data.action),
+            path: data.path ?? '',
+            method: data.method ?? '',
             input: JSON.stringify(data.input),
             output: JSON.stringify(data.output),
             message: JSON.stringify(data.message)
