@@ -28,6 +28,9 @@ app.get('/api/send', middlewareAuthAPI, (request, response) => {
 
 queue.consume(process.env.CHANNEL_LOG, async message => {
     const content = JSON.parse(String(message.content));
+    if (process.env.DEBUG == 'true')
+        console.log(content);
+
     const dto = await dtoLog.fromMessaging(content);
     logService.create(dto);
 })

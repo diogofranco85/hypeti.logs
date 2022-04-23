@@ -3,15 +3,27 @@ import * as Yup from 'yup'
 export default {
     fromMessaging: (data) => {
 
+        if (data.length < 10)
+            return {
+                code: data[0].code,
+                app: data[1],
+                action: data[3],
+                path: JSON.stringify(data[2]),
+                method: JSON.stringify(data[3]),
+                input: JSON.stringify(data[5]),
+                output: JSON.stringify(data),
+                message: JSON.stringify(data[4])
+            }
+
         return {
-            code: data.code ?? 0,
-            app: JSON.stringify(data.app),
-            action: JSON.stringify(data.action),
-            path: data.path ?? '',
-            method: data.method ?? '',
-            input: JSON.stringify(data.input),
-            output: JSON.stringify(data.output),
-            message: JSON.stringify(data.message)
+            code: data[0].code,
+            app: data[1],
+            action: data[6],
+            path: JSON.stringify(data[2]),
+            method: JSON.stringify(data[3]),
+            input: JSON.stringify(data[5]),
+            output: JSON.stringify(data),
+            message: JSON.stringify(data[7])
         }
     },
 
