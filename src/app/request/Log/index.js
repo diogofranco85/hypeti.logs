@@ -21,7 +21,7 @@ export default {
             action: data[6],
             path: JSON.stringify(data[2]),
             method: JSON.stringify(data[3]),
-            input: JSON.stringify(data[5]),
+            input: JSON.stringify(data[4]),
             output: JSON.stringify(data),
             message: JSON.stringify(data[7])
         }
